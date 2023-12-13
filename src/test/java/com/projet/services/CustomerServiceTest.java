@@ -1,14 +1,16 @@
-package com.projet.service;
+package com.projet.repository;
 import com.projet.entities.Client;
 import com.projet.metier.CustomerMetierImpl;
-import com.projet.metier.CustomerMetierInterface;
 import com.projet.repository.CustomerRepository;
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import java.util.Arrays;
@@ -20,11 +22,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class CustomerServiceTest {
+    @Mock
+        private Client clt;
     @InjectMocks
     private CustomerMetierImpl customerMetier;
 
     @Mock
     private CustomerRepository customerRepository;
+
 
     @Test
     public void saveCustomerWithRepositoryException() {
